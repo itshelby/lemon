@@ -1,0 +1,15 @@
+{
+  "name": "lemon",
+  "scripts": {
+    "dev": "gulp"
+  },
+  "version": "0.0.1",
+  "main": "app.js",
+  "author": "itshelby <neko.klaus.coder@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "gulp": "4.0.0"
+  }
+}
