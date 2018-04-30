@@ -1,6 +1,9 @@
 import {src, dest, watch, parallel, series, task} from 'gulp'
 import browserSync from 'browser-sync'
 import pug from 'gulp-pug'
+import sass from 'gulp-sass'
+import minifycss from 'gulp-minify-css'
+
 
 // Build Directories
 // ----
@@ -12,7 +15,8 @@ const dirs = {
 // File Sources
 // ---- 
 const sources = {
-  views: `${dirs.src}/**/*.pug`
+  views: `${dirs.src}/**/*.pug`,
+  styles: `${dirs.src}/**/*.sass`
 }
 
 // Main Tasks
@@ -27,7 +31,15 @@ export const server = () => {
     notify: false
   })
   watch(sources.views, buildViews)
+  watch(sources.styles, buildStyles)
 }
+
+// Styles
+export const buildStyles = () => src(sources.styles)
+  .pipe(sass.sync().on('error', sass.logError))
+  .pipe(minifycss())
+  .pipe(dest(dirs.dest))
+  .pipe(browserSync.stream())
 
 // Views
 export const buildViews = () => src(sources.views)
