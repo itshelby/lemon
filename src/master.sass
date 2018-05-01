@@ -1,3 +1,57 @@
+$font-color: #333
+$font: "Sawarabi Mincho"
+
 body
-  background: pink
-  color: #fff
+  background-image: linear-gradient(to right top, #eaeaea, #f7d794)
+  color: $font-color
+  font-family: $font
+  display: flex
+  justify-content: center
+  align-content: space-between
+  align-items: center
+  flex-direction: column
+  height: 100vh
+  width: 100%
+  overflow: hidden
+
+main
+  display: flex
+  flex-direction: column
+  background: #fff
+  box-shadow: 0 0 10px rgba(0,0,0,0.2)
+  width: 250px
+  border-radius: 3px
+  text-align: center
+
+header
+  height: 70px
+  border-bottom: 1px solid rgba(0,0,0,0.05)
+  h1
+    margin: 0
+    line-height: 70px
+    font-size: 2em
+
+.clock
+  border-bottom: 1px solid rgba(0,0,0,0.05)
+  h2
+    margin: 0em 0 0 0
+    font-size: 3.5em
+    font-family: 'Gloria Hallelujah', cursive
+    font-weight: 100
+
+.button
+  display: flex
+  justify-content: center
+  margin: 1.25em
+  span
+    font-size: 1.5em
+    border: 1px solid #f7d794
+    padding: 0 0.5em
+    color: #333
+    cursor: pointer
+    transition: all 0.35s
+    width: 100px
+    height: 50px
+    line-height: 50px
+    &:hover
+      background: #f7d794
