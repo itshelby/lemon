@@ -58,7 +58,7 @@ export const buildScripts = () => src(sources.scripts)
   .pipe(browserSync.stream())
 
 // Development Task
-export const dev = series(server)
+export const dev = series(buildStyles, buildViews, buildScripts, server)
 
 // Default task
 export default dev
