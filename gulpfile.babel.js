@@ -5,6 +5,7 @@ import sass from 'gulp-sass'
 import minifycss from 'gulp-minify-css'
 import concat from 'gulp-concat'
 import uglify from 'gulp-uglify'
+import babel from 'gulp-babel'
 
 // Build Directories
 // ----
@@ -52,6 +53,7 @@ export const buildViews = () => src(sources.views)
 
 // JS
 export const buildScripts = () => src(sources.scripts)
+  .pipe(babel())
   .pipe(uglify())
   .pipe(concat('master.min.js'))
   .pipe(dest(dirs.dest))

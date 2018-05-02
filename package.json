@@ -12,6 +12,7 @@
     "babel-register": "^6.26.0",
     "browser-sync": "^2.24.1",
     "gulp": "4.0.0",
+    "gulp-babel": "^7.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-minify-css": "^1.2.4",
     "gulp-pug": "^4.0.1",
