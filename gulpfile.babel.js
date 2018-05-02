@@ -3,6 +3,8 @@ import browserSync from 'browser-sync'
 import pug from 'gulp-pug'
 import sass from 'gulp-sass'
 import minifycss from 'gulp-minify-css'
+import concat from 'gulp-concat'
+import uglify from 'gulp-uglify'
 
 // Build Directories
 // ----
@@ -15,7 +17,8 @@ const dirs = {
 // ---- 
 const sources = {
   views: `${dirs.src}/**/*.pug`,
-  styles: `${dirs.src}/**/*.sass`
+  styles: `${dirs.src}/**/*.sass`,
+  scripts: `${dirs.src}/**/*.js`
 }
 
 // Main Tasks
@@ -31,6 +34,7 @@ export const server = () => {
   })
   watch(sources.views, buildViews)
   watch(sources.styles, buildStyles)
+  watch(sources.scripts, buildScripts)
 }
 
 // Styles
@@ -43,6 +47,13 @@ export const buildStyles = () => src(sources.styles)
 // Views
 export const buildViews = () => src(sources.views)
   .pipe(pug())
+  .pipe(dest(dirs.dest))
+  .pipe(browserSync.stream())
+
+// JS
+export const buildScripts = () => src(sources.scripts)
+  .pipe(uglify())
+  .pipe(concat('master.min.js'))
   .pipe(dest(dirs.dest))
   .pipe(browserSync.stream())
 
