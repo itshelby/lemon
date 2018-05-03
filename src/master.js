@@ -1,10 +1,10 @@
 class Lemon {
-  constructor (start, go, minute, audio) {
+  constructor (start, go, minute, ai) {
     this.time = document.getElementById(start)
     this.start = document.getElementById(go)
+    this.ai = document.getElementById(ai)
 
     this.minutes = minute
-    this.audio = audio
     this.seconds = 60
 
     this.testNotify()
@@ -35,6 +35,7 @@ class Lemon {
 
       if (this.minutes < 0) {
         clearInterval(this.timer)
+        this.audio()
         this.notify()
         this.start.innerHTML = '行こう'
         this.time.innerHTML = '25:00'
@@ -59,14 +60,14 @@ class Lemon {
     }
   }
 
-  cutReset() {
+  cutReset () {
     clearInterval(this.timer)
     this.time.innerHTML = '25:00'
     this.minutes = 25
     this.seconds = 60
   }
 
-  testNotify() {
+  testNotify () {
     if (Notification.premission !== 'denied') {
       Notification.requestPermission(function(premission) {
         console.log('Success')
@@ -75,13 +76,17 @@ class Lemon {
     }
   }
 
-  notify() {
+  notify () {
     let notifycation = new Notification('こけの一年岩をとおす', {
       dir: 'auto',
       icon: "https://pp.userapi.com/c840234/v840234665/302df/EFnxoLbHk_Y.jpg",
       body: '前進'
     })
   }
+
+  audio () {
+    this.ai.play()
+  }
 }
 
-let lemon = new Lemon('clock-timer', 'button-start', 25)
+let lemon = new Lemon('clock-timer', 'button-start', 25, 'ai')
